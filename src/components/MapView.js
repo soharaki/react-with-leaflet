@@ -8,19 +8,35 @@ class MapView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentLocation: { lat: 52.52437, lng: 13.41053 },
-      zoom: 12,
-      venues: []
+      currentLocation: { lat: 35.6862, lng: 139.7365 },
+      zoom: 18,
+      venue: null,
+      arrayvar: []
     };
     this.changeMarker = this.changeMarker.bind(this);
   }
 
   changeMarker = (latitude, longitude) => {
-    console.log("changeMarker");
     console.log(latitude, longitude);
+
+    var newelement =
+    {
+      "description": "",
+      "name": "",
+      "geometry": [
+        latitude,
+        longitude
+      ]
+    };
+
+    this.setState(prevState => ({
+      arrayvar: [...prevState.arrayvar, newelement],
+      currentLocation: { lat: latitude, lng: longitude }
+    }));
+
     this.setState({
-      venues: [<Markers venues={data.venues} />]
-    })
+      venue: <Markers venues={this.state.arrayvar} />
+    });
   };
 
   render() {
@@ -32,8 +48,7 @@ class MapView extends Component {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
-
-        {this.state.venues}
+        {this.state.venue}
       </Map>
     );
   }

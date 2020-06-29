@@ -7,18 +7,14 @@ class _App extends Component {
   constructor(props) {
     super(props);
     this.mapViewElement = React.createRef();
-    this.state = {
-      hoge: 'hogehoge'
-    };
   }
   handleClick = (latitude, longitude) => {
-    console.log("handleClick");
     this.mapViewElement.current.changeMarker(latitude, longitude);
   };
 
   render() {
     return (
-      <div className="App">
+      <div class="App" uk-grid>
         <InputView addMark={(latitude, longitude) => { this.handleClick(latitude, longitude); }} />
         <MapView ref={this.mapViewElement} />
       </div>
@@ -27,9 +23,7 @@ class _App extends Component {
 }
 function App() {
   return (
-    <div className="App">
-      <_App />
-    </div>
+    <_App />
   );
 }
 

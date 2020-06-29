@@ -22,7 +22,7 @@ class InputView extends Component {
             <div className="App">
                 <header className="App-header">
                     <a class="uk-button uk-button-primary" onClick={this.handleClick}>住所を表示</a>
-
+                    <p class="uk-text-background">{addressName}</p>
                     <p>
                         <input class="uk-input"
                             type="text" value={zip_code} onChange={(e) => {
@@ -31,8 +31,6 @@ class InputView extends Component {
                                 console.log(zip_code);
                             }} />
                     </p>
-
-                    <p class="uk-text-background">{addressName}</p>
                 </header>
             </div>
         );
