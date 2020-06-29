@@ -10,8 +10,18 @@ class MapView extends Component {
     this.state = {
       currentLocation: { lat: 52.52437, lng: 13.41053 },
       zoom: 12,
-    }
+      venues: []
+    };
+    this.changeMarker = this.changeMarker.bind(this);
   }
+
+  changeMarker = (latitude, longitude) => {
+    console.log("changeMarker");
+    console.log(latitude, longitude);
+    this.setState({
+      venues: [<Markers venues={data.venues} />]
+    })
+  };
 
   render() {
     const { currentLocation, zoom } = this.state;
@@ -23,7 +33,7 @@ class MapView extends Component {
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
 
-        <Markers venues={data.venues}/>
+        {this.state.venues}
       </Map>
     );
   }

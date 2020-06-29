@@ -15,7 +15,6 @@ class InputView extends Component {
         }
         this.handleClick = this.handleClick.bind(this);
     }
-
     render() {
         const { addressName, zip_code } = this.state;
 
@@ -57,10 +56,7 @@ class InputView extends Component {
                     }).then(res => {
                         return res.json();
                     }).then(json => {
-                        console.log(json[0].geometry.coordinates[0]);
-                        console.log(json[0].geometry.coordinates[1]);
-
-
+                        this.props.addMark(json[0].geometry.coordinates[1], json[0].geometry.coordinates[0]);
                     });
                 } else {
                     this.setState({ addressName: "正しい郵便番号を設定してください" });
