@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import data from '../assets/data';
 import Markers from './VenueMarkers';
 
 class MapView extends Component {
