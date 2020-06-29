@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "fast-xml-parser": "^3.17.4",
     "imi-enrichment-address": "file:imi-enrichment-address-2.0.0.tgz",
     "leaflet": "^1.5.1",
+    "proj4": "^2.6.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-leaflet": "^2.5.0",
