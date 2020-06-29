@@ -3,6 +3,7 @@ import UIkit from 'uikit'
 import Icons from 'uikit/dist/js/uikit-icons'
 import 'uikit/dist/css/uikit.css'
 import 'uikit/dist/css/uikit.min.css'
+import Parser from "fast-xml-parser";
 UIkit.use(Icons);
 
 class InputView extends Component {
@@ -33,7 +34,6 @@ class InputView extends Component {
                     </p>
 
                     <p class="uk-text-background">{addressName}</p>
-
                 </header>
             </div>
         );
@@ -41,16 +41,28 @@ class InputView extends Component {
 
     // ボタン押下時のイベントトリガー
     handleClick() {
-        fetch('https://api.zipaddress.net/?zipcode='+this.state.zip_code, {
-            mode: 'cors'
+        fetch('https://api.zipaddress.net/?zipcode=' + this.state.zip_code, {
+            mode: 'cors',
         })
             .then(res => {
                 return res.json();
             })
             .then(json => {
-                if(json.code === 200){
+                if (json.code === 200) {
+                    console.log(json.data);
                     this.setState({ addressName: json.data.fullAddress });
-                }else{
+
+                    fetch('https://msearch.gsi.go.jp/address-search/AddressSearch?q=' + json.data.fullAddress, {
+                        mode: 'cors',
+                    }).then(res => {
+                        return res.json();
+                    }).then(json => {
+                        console.log(json[0].geometry.coordinates[0]);
+                        console.log(json[0].geometry.coordinates[1]);
+
+
+                    });
+                } else {
                     this.setState({ addressName: "正しい郵便番号を設定してください" });
                 }
             })
