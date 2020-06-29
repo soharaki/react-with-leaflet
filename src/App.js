@@ -11,24 +11,24 @@ class _App extends Component {
       hoge: 'hogehoge'
     };
   }
-  handleClick = (latitude, longitude ) => {
+  handleClick = (latitude, longitude) => {
     console.log("handleClick");
-    this.mapViewElement.current.changeMarker(latitude, longitude );
+    this.mapViewElement.current.changeMarker(latitude, longitude);
   };
 
-  render(){    
+  render() {
     return (
       <div className="App">
-        <InputView addMark={(latitude, longitude ) => { this.handleClick(latitude, longitude ); }} />
+        <InputView addMark={(latitude, longitude) => { this.handleClick(latitude, longitude); }} />
         <MapView ref={this.mapViewElement} />
-    </div>
+      </div>
     );
   }
 }
 function App() {
   return (
     <div className="App">
-      <_App/>
+      <_App />
     </div>
   );
 }
