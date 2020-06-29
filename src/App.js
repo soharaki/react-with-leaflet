@@ -10,8 +10,7 @@ class _App extends Component {
   }
   handleClick = (latitude, longitude) => {
     this.mapViewElement.current.changeMarker(latitude, longitude);
-  };
-
+  }
   render() {
     return (
       <div class="App" uk-grid>
