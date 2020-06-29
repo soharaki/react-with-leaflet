@@ -68,7 +68,6 @@ class InputView extends Component {
                 if (json.code === 200) {
                     console.log(json.data);
                     this.setState({ addressName: json.data.fullAddress });
-
                     fetch('https://msearch.gsi.go.jp/address-search/AddressSearch?q=' + json.data.fullAddress, {
                         mode: 'cors',
                     }).then(res => {
